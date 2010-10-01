@@ -119,7 +119,7 @@ class ParseUserAgent
         @os_type = 'Macintosh' unless @os_type
         @os_version = 'MacOS' unless @os_version
       end
-      if property =~ /(?:^Linux|Linux (?:i[3456]86|x86\w*|amd64)|(?:i[3456]86|i686|x86\w*|amd64) Linux)/
+      if property =~ /Linux/
         @os_type = 'Linux'
         @os = property
       end
