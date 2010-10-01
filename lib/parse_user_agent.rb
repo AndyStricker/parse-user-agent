@@ -1,6 +1,9 @@
+# Original Code by Jackson Miller (Website http://jaxn.org)
+
 class ParseUserAgent
   
-  attr_reader :ostype, :browser, :os_version, :browser_version_major
+  attr_reader :os_type, :os_version
+  attr_reader :browser, :browser_version_major, :browser_version_minor
   
   def parse(user_agent)
     if '-' == user_agent
@@ -30,12 +33,22 @@ class ParseUserAgent
           if @browser == 'Firefox'
             @browser_version_major = parts[1].slice(0,3)
             @browser_version_minor = parts[1].sub(@browser_version_major,'').sub('.','')
+          elsif @browser == 'Chrome'
+            m = @browser_version.match(/(\d+)\.(\d+)\.\d+\.\d+/)
+            @browser_version_major = m[1]
+            @browser_version_minor = m[2]
+            break
           elsif @browser == 'Safari'
             if parts[1].slice(0,3).to_f < 400
               @browser_version_major = '1'
             else
               @browser_version_major = '2'
             end
+          elsif @browser == 'Opera'
+            m = @browser_version.match(/(\d+)\.(\d+)/)
+            @browser_version_major = m[1]
+            @browser_version_minor = m[2]
+            break
           else
             @browser_version_major = parts[1].slice(0,1)
           end
@@ -52,11 +65,11 @@ class ParseUserAgent
     # cycle through the properties to set known quantities
     @properties.each {|property| 
       if property =~ /^Win/
-        @ostype = 'Windows'
+        @os_type = 'Windows'
         @os = property
         if parts = property.split(/ /,2)
           if parts[1] =~ /^NT/
-            @ostype = 'Windows'
+            @os_type = 'Windows'
             subparts = parts[1].split(/ /,2)
             if subparts[1] == '5'
               @os_version = '2000'
@@ -69,16 +82,16 @@ class ParseUserAgent
         end
       end
       if property == 'Macintosh'
-        @ostype = 'Macintosh'
+        @os_type = 'Macintosh'
         @os = property
       end
       if property =~ /OS X/
-        @ostype = 'Macintosh'
+        @os_type = 'Macintosh'
         @os_version = 'OS X'
         @os = property
       end
       if property =~ /^Linux/
-        @ostype = 'Linux'
+        @os_type = 'Linux'
         @os = property
       end
       if property =~ /^MSIE/
