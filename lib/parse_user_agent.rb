@@ -106,14 +106,36 @@ class ParseUserAgent
           end
         end
       end
+      if property =~ /^(iPod|iPhone|iPad)/
+        @os_type = 'iOS'
+        @os_version = $1
+      end
       if property == 'Macintosh'
         @os_type = 'Macintosh'
         @os = property
       end
       if property =~ /OS X/
-        @os_type = 'Macintosh'
-        @os_version = 'OS X'
-        @os = property
+        m = property.match(/OS X\s*?(\d+[._]\d+)/)
+        if (@os_type == 'iOS')
+          if m
+            @os_version = m[1].gsub('_', '.')
+          end
+        else
+          @os_type = 'Macintosh'
+          if m
+            @os_version = 'OS X ' + m[1].gsub('_', '.')
+          else
+            @os_version = 'OS X'
+          end
+          @os = property
+        end
+      end
+      if property =~ /^CPU iPhone OS (\d+[._]\d+)/
+        if @os_version
+          @os_version = @os_version + ' iOS ' + $1.gsub('_', '.')
+        else
+          @os_version = 'iOS ' + $1.gsub('_', '.')
+        end
       end
       if property =~ /(?:PPC|PowerPC)/
         @os_type = 'Macintosh' unless @os_type
@@ -148,6 +170,13 @@ class ParseUserAgent
           @os_type = 'Windows'
           @os_version = 'CE'
         end
+      end
+      if property =~ /^CrOS/
+        @os_type = 'Linux'
+        @os_version = 'Chrome OS';
+      end
+      if property =~ /^Android (\d+\.\d+)/
+        @os_version = 'Android ' + $1
       end
       if (property =~ /^rv:/) and (@browser != 'Firefox')
         @browser_version = property.split(':', 1)[-1]

@@ -74,7 +74,7 @@ class ParseUserAgentTest < Test::Unit::TestCase
             :browser_version_major => '6',
             :browser_version_minor => '0',
             :os_type => 'Macintosh',
-            :os_version => 'OS X'
+            :os_version => 'OS X 10.6'
         },
         {
             :ua => 'Opera/9.80 (Macintosh; Intel Mac OS X; U; de) Presto/2.2.15 Version/10.10',
@@ -83,6 +83,38 @@ class ParseUserAgentTest < Test::Unit::TestCase
             :browser_version_minor => '80',
             :os_type => 'Macintosh',
             :os_version => 'OS X'
+        },
+        {
+            :ua => 'Mozilla/5.0 (X11; Linux i686) AppleWebKit/535.1 (KHTML, like Gecko) Ubuntu/11.04 Chromium/14.0.825.0 Chrome/14.0.825.0 Safari/535.1',
+            :browser => 'Chrome',
+            :browser_version_major => '14',
+            :browser_version_minor => '0',
+            :os_type => 'Linux',
+            :os_version => nil
+        },
+        {
+            :ua => 'Mozilla/5.0 ArchLinux (X11; Linux x86_64) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/13.0.782.41 Safari/535.1',
+            :browser => 'Chrome',
+            :browser_version_major => '13',
+            :browser_version_minor => '0',
+            :os_type => 'Linux',
+            :os_version => nil
+        },
+        {
+            :ua => 'Mozilla/5.0 (Windows NT 6.1; en-US) AppleWebKit/534.30 (KHTML, like Gecko) Chrome/12.0.750.0 Safari/534.30',
+            :browser => 'Chrome',
+            :browser_version_major => '12',
+            :browser_version_minor => '0',
+            :os_type => 'Windows',
+            :os_version => '7/Server 2008 R2'
+        },
+        {
+            :ua => 'Mozilla/5.0 (X11; CrOS i686 12.433.109) AppleWebKit/534.30 (KHTML, like Gecko) Chrome/12.0.742.93 Safari/534.30',
+            :browser => 'Chrome',
+            :browser_version_major => '12',
+            :browser_version_minor => '0',
+            :os_type => 'Linux',
+            :os_version => 'Chrome OS'
         },
         {
             :ua => 'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/534.10 (KHTML, like Gecko) Chrome/7.0.540.0 Safari/534.10',
@@ -138,7 +170,7 @@ class ParseUserAgentTest < Test::Unit::TestCase
             :browser_version_major => '4',
             :browser_version_minor => '0',
             :os_type => 'Macintosh',
-            :os_version => 'OS X'
+            :os_version => 'OS X 10.5'
         },
         {
             :ua => 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_5_8; en-US) AppleWebKit/532.0 (KHTML, like Gecko) Chrome/3.0.198 Safari/532.0',
@@ -146,7 +178,31 @@ class ParseUserAgentTest < Test::Unit::TestCase
             :browser_version_major => '3',
             :browser_version_minor => '0',
             :os_type => 'Macintosh',
-            :os_version => 'OS X'
+            :os_version => 'OS X 10.5'
+        },
+        {
+            :ua => 'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0; chromeframe/12.0.742.112)',
+            :browser => 'MSIE',
+            :browser_version_major => '9',
+            :browser_version_minor => '0',
+            :os_type => 'Windows',
+            :os_version => '7/Server 2008 R2'
+        },
+        {
+            :ua => 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/5.0)',
+            :browser => 'MSIE',
+            :browser_version_major => '10',
+            :browser_version_minor => '0',
+            :os_type => 'Windows',
+            :os_version => '7/Server 2008 R2'
+        },
+        {
+            :ua => 'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Win64; x64; Trident/5.0; .NET CLR 2.0.50727; SLCC2; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; Zune 4.0; Tablet PC 2.0; InfoPath.3; .NET4.0C; .NET4.0E)',
+            :browser => 'MSIE',
+            :browser_version_major => '9',
+            :browser_version_minor => '0',
+            :os_type => 'Windows',
+            :os_version => '7/Server 2008 R2'
         },
         {
             :ua => 'Mozilla/5.0 (Windows; U; MSIE 9.0; Windows NT 6.1; en-US)',
@@ -458,7 +514,7 @@ class ParseUserAgentTest < Test::Unit::TestCase
             :browser_version_major => '3',
             :browser_version_minor => '0',
             :os_type => 'Linux',
-            :os_version => nil 
+            :os_version => nil
         },
         {
             :ua => 'Mozilla/5.0 (X11; U; OpenBSD amd64; en-US; rv:1.9.0.1) Gecko/2008081402 Firefox/3.0.1',
@@ -613,6 +669,102 @@ class ParseUserAgentTest < Test::Unit::TestCase
             :os_version => nil
         },
         {
+            :ua => 'Mozilla/5.0 (Windows NT 6.1; rv:1.9) Gecko/20100101 Firefox/4.0',
+            :browser => 'Firefox',
+            :browser_version_major => '4',
+            :browser_version_minor => '0',
+            :os_type => 'Windows',
+            :os_version => '7/Server 2008 R2'
+        },
+        {
+            :ua => 'Mozilla/5.0 (X11; Linux x86_64; rv:2.0.1) Gecko/20110506 Firefox/4.0.1',
+            :browser => 'Firefox',
+            :browser_version_major => '4',
+            :browser_version_minor => '0',
+            :os_type => 'Linux',
+            :os_version => nil
+        },
+        {
+            :ua => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv:5.0.1) Gecko/20100101 Firefox/5.0.1',
+            :browser => 'Firefox',
+            :browser_version_major => '5',
+            :browser_version_minor => '0',
+            :os_type => 'Macintosh',
+            :os_version => 'OS X 10.6'
+        },
+        {
+            :ua => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.7; rv:5.0) Gecko/20100101 Firefox/5.0',
+            :browser => 'Firefox',
+            :browser_version_major => '5',
+            :browser_version_minor => '0',
+            :os_type => 'Macintosh',
+            :os_version => 'OS X 10.7'
+        },
+        {
+            :ua => 'Mozilla/5.0 (Windows NT 6.1; U; ru; rv:5.0.1.6) Gecko/20110501 Firefox/5.0.1 Firefox/5.0.1',
+            :browser => 'Firefox',
+            :browser_version_major => '5',
+            :browser_version_minor => '0',
+            :os_type => 'Windows',
+            :os_version => '7/Server 2008 R2'
+        },
+        {
+            :ua => 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:6.0a2) Gecko/20110613 Firefox/6.0a2',
+            :browser => 'Firefox',
+            :browser_version_major => '6',
+            :browser_version_minor => '0',
+            :os_type => 'Windows',
+            :os_version => '7/Server 2008 R2'
+        },
+        {
+            :ua => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8) AppleWebKit/534.50 (KHTML, like Gecko) Version/5.1 Safari/534.50',
+            :browser => 'Safari',
+            :browser_version_major => '5',
+            :browser_version_minor => '1',
+            :os_type => 'Macintosh',
+            :os_version => 'OS X 10.6'
+        },
+        {
+            :ua => 'Mozilla/5.0 (iPhone; U; CPU iPhone OS 4_1 like Mac OS X; en-us) AppleWebKit/532.9 (KHTML, like Gecko) Version/4.0.5 Mobile/8B5097d Safari/6531.22.7',
+            :browser => 'Safari',
+            :browser_version_major => '4',
+            :browser_version_minor => '0',
+            :os_type => 'iOS',
+            :os_version => 'iPhone iOS 4.1'
+        },
+        {
+            :ua => 'Mozilla/5.0 (iPod; U; CPU iPhone OS 4_3_3 like Mac OS X; ja-jp) AppleWebKit/533.17.9 (KHTML, like Gecko) Version/5.0.2 Mobile/8J2 Safari/6533.18.5',
+            :browser => 'Safari',
+            :browser_version_major => '5',
+            :browser_version_minor => '0',
+            :os_type => 'iOS',
+            :os_version => 'iPod iOS 4.3'
+        },
+        {
+            :ua => 'Mozilla/5.0 (iPhone; U; CPU iPhone OS 4_3 like Mac OS X; pl-pl) AppleWebKit/533.17.9 (KHTML, like Gecko) Version/5.0.2 Mobile/8F190 Safari/6533.18.5',
+            :browser => 'Safari',
+            :browser_version_major => '5',
+            :browser_version_minor => '0',
+            :os_type => 'iOS',
+            :os_version => 'iPhone iOS 4.3'
+        },
+        {
+            :ua => 'Mozilla/5.0(iPad; U; CPU iPhone OS 3_2 like Mac OS X; en-us) AppleWebKit/531.21.10 (KHTML, like Gecko) Version/4.0.4 Mobile/7B314 Safari/531.21.10gin_lib.cc',
+            :browser => 'Safari',
+            :browser_version_major => '4',
+            :browser_version_minor => '0',
+            :os_type => 'iOS',
+            :os_version => 'iPad iOS 3.2'
+        },
+        {
+            :ua => 'Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420+ (KHTML, like Gecko) Version/3.0 Mobile/1A543a Safari/419.3',
+            :browser => 'Safari',
+            :browser_version_major => '3',
+            :browser_version_minor => '0',
+            :os_type => 'iOS',
+            :os_version => 'iPhone'
+        },
+        {
             :ua => 'Opera/9.64 (Windows NT 6.1; U; de) Presto/2.1.1',
             :browser => 'Opera',
             :browser_version_major => '9',
@@ -698,7 +850,7 @@ class ParseUserAgentTest < Test::Unit::TestCase
             :browser_version_major => '5',
             :browser_version_minor => '0',
             :os_type => 'Macintosh',
-            :os_version => 'OS X'
+            :os_version => 'OS X 10.6'
         },
         {
             :ua => 'Mozilla/5.0 (X11; U; Linux x86_64; en-ca) AppleWebKit/531.2+ (KHTML, like Gecko) Version/5.0 Safari/531.2+',
@@ -714,7 +866,7 @@ class ParseUserAgentTest < Test::Unit::TestCase
             :browser_version_major => '4',
             :browser_version_minor => '1',
             :os_type => 'Macintosh',
-            :os_version => 'OS X'
+            :os_version => 'OS X 10.4'
         },
         {
             :ua => 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_5_6; en-gb) AppleWebKit/528.10+ (KHTML, like Gecko) Version/4.0dp1 Safari/526.11.2',
@@ -722,7 +874,7 @@ class ParseUserAgentTest < Test::Unit::TestCase
             :browser_version_major => '4',
             :browser_version_minor => '0',
             :os_type => 'Macintosh',
-            :os_version => 'OS X'
+            :os_version => 'OS X 10.5'
         },
         {
             :ua => 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_5_7; en-us) AppleWebKit/531.2+ (KHTML, like Gecko) Version/4.0.1 Safari/530.18',
@@ -730,7 +882,7 @@ class ParseUserAgentTest < Test::Unit::TestCase
             :browser_version_major => '4',
             :browser_version_minor => '0',
             :os_type => 'Macintosh',
-            :os_version => 'OS X'
+            :os_version => 'OS X 10.5'
         },
         {
             :ua => 'Mozilla/5.0 (Windows; U; Windows NT 5.1; nb-NO) AppleWebKit/528.16 (KHTML, like Gecko) Version/4.0 Safari/528.16',
@@ -746,7 +898,7 @@ class ParseUserAgentTest < Test::Unit::TestCase
             :browser_version_major => '3',
             :browser_version_minor => '2',
             :os_type => 'Macintosh',
-            :os_version => 'OS X'
+            :os_version => 'OS X 10.5'
         },
         {
             :ua => 'Mozilla/5.0 (Windows; U; Windows NT 5.1; ko-KR) AppleWebKit/525.28 (KHTML, like Gecko) Version/3.2.2 Safari/525.28.1',
@@ -772,7 +924,46 @@ class ParseUserAgentTest < Test::Unit::TestCase
             :os_type => 'Macintosh',
             :os_version => 'OS X'
         },
-
+        {
+            :ua => 'Mozilla/5.0 (Linux; U; Android 2.3.3; de-ch; HTC Desire Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1',
+            :browser => 'Safari',
+            :browser_version_major => '4',
+            :browser_version_minor => '0',
+            :os_type => 'Linux',
+            :os_version => 'Android 2.3'
+        },
+        {
+            :ua => 'Mozilla/5.0 (Linux; U; Android 2.3.4; fr-fr; HTC Desire Build/GRJ22) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1',
+            :browser => 'Safari',
+            :browser_version_major => '4',
+            :browser_version_minor => '0',
+            :os_type => 'Linux',
+            :os_version => 'Android 2.3'
+        },
+        {
+            :ua => 'Mozilla/5.0 (Linux; U; Android 1.6; ar-us; SonyEricssonX10i Build/R2BA026) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1',
+            :browser => 'Safari',
+            :browser_version_major => '3',
+            :browser_version_minor => '1',
+            :os_type => 'Linux',
+            :os_version => 'Android 1.6'
+        },
+        {
+            :ua => 'Mozilla/5.0 (Linux; U; Android 2.2.1; en-ca; LG-P505R Build/FRG83) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1',
+            :browser => 'Safari',
+            :browser_version_major => '4',
+            :browser_version_minor => '0',
+            :os_type => 'Linux',
+            :os_version => 'Android 2.2'
+        },
+        {
+            :ua => 'Mozilla/5.0 (Linux; U; Android 2.1; en-us; Nexus One Build/ERD62) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17',
+            :browser => 'Safari',
+            :browser_version_major => '4',
+            :browser_version_minor => '0',
+            :os_type => 'Linux',
+            :os_version => 'Android 2.1'
+        },
     ]
 
     @user_agents = Array.new
@@ -792,7 +983,7 @@ class ParseUserAgentTest < Test::Unit::TestCase
   def test_create
     @user_agents.each { |user_agent| assert_kind_of ParseUserAgent, user_agent}
   end
-  
+
   # this test sucks because I had to parse during setup
   def test_parse
     @user_agent_strings.each_index { |n| @user_agents[n].parse(@user_agent_strings[n][:ua])}
