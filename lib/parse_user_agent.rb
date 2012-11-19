@@ -101,6 +101,8 @@ class ParseUserAgent
               @os_version = 'Vista/Server 2008'
             elsif subparts[1] == '6.1'
               @os_version = '7/Server 2008 R2'
+            elsif subparts[1] == '6.2'
+              @os_version = '8'
             else
               @os_version = 'NT'
               @os_version += ' ' + subparts[1] if subparts and subparts[1].length > 0

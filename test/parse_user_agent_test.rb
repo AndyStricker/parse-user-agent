@@ -725,6 +725,14 @@ class ParseUserAgentTest < Test::Unit::TestCase
             :os_version => '7/Server 2008 R2'
         },
         {
+            :ua => 'Mozilla/6.0 (Windows NT 6.2; WOW64; rv:16.0.1) Gecko/20121011 Firefox/16.0.1',
+            :browser => 'Firefox',
+            :browser_version_major => '16',
+            :browser_version_minor => '0',
+            :os_type => 'Windows',
+            :os_version => '8'
+        },
+        {
             :ua => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8) AppleWebKit/534.50 (KHTML, like Gecko) Version/5.1 Safari/534.50',
             :browser => 'Safari',
             :browser_version_major => '5',
