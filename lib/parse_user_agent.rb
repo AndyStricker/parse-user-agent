@@ -82,7 +82,11 @@ class ParseUserAgent
         @os_type = 'Windows'
         @os = property
         if parts = property.split(/ /,2)
-          if parts[1] =~ /^NT/
+          if parts[0] == 'Windows' and parts[1] =~ /^Phone/
+            @os_type = 'Windows Phone'
+            subparts = parts[1].split(/ /,2)
+            @os_version = subparts[1]
+          elsif parts[1] =~ /^NT/
             @os_type = 'Windows'
             subparts = parts[1].split(/ /,2)
             if (subparts[1] == '5') or (subparts[1] == '5.0')
