@@ -39,6 +39,14 @@ class ParseUserAgentTest < Test::Unit::TestCase
             :os_version => '8.0'
         },
         {
+            :ua => 'Mozilla/5.0 (IE 11.0; Windows NT 6.3; Trident/7.0; .NET4.0E; .NET4.0C; rv:11.0) like Gecko',
+            :browser => 'MSIE',
+            :browser_version_major => '11',
+            :browser_version_minor => '0',
+            :os_type => 'Windows',
+            :os_version => 'NT 6.3'
+        },
+        {
             :ua => 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.0.2) Gecko/20060308 Firefox/1.5.0.2 ',
             :browser => 'Firefox',
             :browser_version_major => '1',

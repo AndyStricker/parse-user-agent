@@ -156,6 +156,11 @@ class ParseUserAgent
         @browser_version = property.gsub('MSIE ','').lstrip
         @browser_version_major,@browser_version_minor = @browser_version.split('.')
       end
+      if (property =~ /^IE\s/)
+        @browser = 'MSIE'
+        @browser_version = property.gsub('IE ', '').lstrip
+        @browser_version_major,@browser_version_minor = @browser_version.split('.')
+      end
       if property =~ /^SunOS/
         @os_type = 'SunOS'
         @os_version = property.gsub('SunOS ', '').lstrip
