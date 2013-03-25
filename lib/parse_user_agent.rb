@@ -187,6 +187,14 @@ class ParseUserAgent
         @os_version = 'Chrome OS';
       end
       if property =~ /^Android (\d+\.\d+)/
+        @os_type = 'Linux'
+        @os_version = 'Android ' + $1
+      elsif property =~ /^Android/
+        @os_type = 'Linux'
+        @os_version = 'Android'
+      end
+      if property =~ /^(Mobile|Tablet)$/ and $os_version =~ /^Android/
+        @os_type = 'Linux'
         @os_version = 'Android ' + $1
       end
       if (property =~ /^rv:/) and (@browser != 'Firefox')

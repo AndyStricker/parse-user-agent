@@ -749,6 +749,31 @@ class ParseUserAgentTest < Test::Unit::TestCase
             :os_version => '8'
         },
         {
+            :ua => 'Mozilla/5.0 (Android; Mobile; rv:13.0) Gecko/13.0 Firefox/13.0',
+            :browser => 'Firefox',
+            :browser_version_major => '13',
+            :browser_version_minor => '0',
+            :os_type => 'Linux',
+            :os_version => 'Android',
+        },
+        {
+            :ua => 'Mozilla/5.0 (Android; Tablet; rv:13.0) Gecko/13.0 Firefox/13.0',
+            :browser => 'Firefox',
+            :browser_version_major => '13',
+            :browser_version_minor => '0',
+            :os_type => 'Linux',
+            :os_version => 'Android',
+        },
+        {
+            # Firefox OS
+            :ua => 'Mozilla/5.0 (Mobile; rv:15.0) Gecko/15.0 Firefox/15.0',
+            :browser => 'Firefox',
+            :browser_version_major => '15',
+            :browser_version_minor => '0',
+            :os_type => nil,
+            :os_version => nil,
+        },
+        {
             :ua => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8) AppleWebKit/534.50 (KHTML, like Gecko) Version/5.1 Safari/534.50',
             :browser => 'Safari',
             :browser_version_major => '5',
