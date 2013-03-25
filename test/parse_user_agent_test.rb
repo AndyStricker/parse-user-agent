@@ -765,6 +765,14 @@ class ParseUserAgentTest < Test::Unit::TestCase
             :os_version => 'Android',
         },
         {
+            :ua => 'Mozilla/5.0 (Android; Mobile; rv:19.0) Gecko/19.0 Firefox/19.0',
+            :browser => 'Firefox',
+            :browser_version_major => '19',
+            :browser_version_minor => '0',
+            :os_type => 'Linux',
+            :os_version => 'Android',
+        },
+        {
             # Firefox OS
             :ua => 'Mozilla/5.0 (Mobile; rv:15.0) Gecko/15.0 Firefox/15.0',
             :browser => 'Firefox',
@@ -1021,6 +1029,14 @@ class ParseUserAgentTest < Test::Unit::TestCase
             :os_type => 'Linux',
             :os_version => 'Android 2.1'
         },
+        {
+            :ua => 'Mozilla/5.0 (Linux; U; Android 2.3.7; de-ch; HTC Desire Build/GRI40; CyanogenMod-7) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1',
+            :browser => 'Safari',
+            :browser_version_major => '4',
+            :browser_version_minor => '0',
+            :os_type => 'Linux',
+            :os_version => 'Android 2.3'
+        }
     ]
 
     @user_agents = Array.new
