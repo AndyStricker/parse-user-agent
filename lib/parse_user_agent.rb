@@ -214,7 +214,7 @@ class ParseUserAgent
     if (@browser == 'Safari') and version_token
       @browser_version = version_token
       m = version_token.match(/(\d+)\.(\d+)/)
-      if m:
+      if m
           @browser_version_major = m[1]
           @browser_version_minor = m[2]
       end
